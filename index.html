@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071521">
+<title>Alameda Medical Alliance | Macro Sheet</title>
+<style>
+:root{
+  --navy:#071521;--navy2:#0d2638;--panel:#102d40;--cyan:#45d9e8;
+  --gold:#e6bd69;--white:#f3f8fb;--muted:#a7bac7;--line:#245064;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#12364a 0%,var(--navy) 58%);color:var(--white);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+.wrap{width:min(900px,100%);margin:0 auto}
+header{padding:30px 18px 26px;text-align:center;background:linear-gradient(180deg,#0b2232eF,#071521d9);border-bottom:2px solid var(--cyan);box-shadow:0 5px 28px #0006}
+.crest{width:66px;height:66px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 12px;color:var(--gold);font-size:31px;box-shadow:0 0 20px #45d9e833,inset 0 0 15px #45d9e811}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);font-weight:800}
+h1{font-size:clamp(26px,6vw,42px);line-height:1.12;letter-spacing:.5px;margin:8px 0;color:var(--white);text-shadow:0 0 20px #45d9e822}
+header p{margin:8px 0 0;color:var(--muted);font-size:14px}
+main{padding:22px 14px 44px}
+.intro{text-align:center;margin:0 auto 22px;max-width:680px}
+.intro h2{font-size:19px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin:0 0 5px}
+.intro p{margin:0;color:var(--muted);font-size:13px}
+.tools{margin:20px 0 18px}
+input{font:inherit;width:100%;border:1px solid var(--line);border-radius:8px;background:#091d2b;color:var(--white);padding:13px 14px;outline:none}
+input::placeholder{color:#8ba3b2}
+input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #45d9e81c}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:0 2px 10px;margin:22px 0 12px}
+.section-head h2{font-size:16px;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);margin:0}
+.small{font-size:12px;color:var(--muted)}
+.macro-list{display:flex;flex-direction:column;gap:11px}
+.card{background:linear-gradient(135deg,#102d40,#0b2232);border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:8px;padding:14px 14px 12px;box-shadow:0 5px 18px #0002}
+.cardtop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.card h3{font-size:15px;font-weight:750;color:var(--gold);margin:0}
+.number{font-size:11px;color:var(--cyan);letter-spacing:1px;font-weight:800;white-space:nowrap}
+.macro{white-space:pre-wrap;overflow-wrap:anywhere;background:#061724;border:1px solid #193d50;border-radius:6px;padding:11px 12px;color:#e7f1f5;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;margin:0 0 10px}
+.copy{width:100%;border:1px solid var(--cyan);border-radius:6px;background:#103a4a;color:#eafcff;padding:10px;font-weight:800;letter-spacing:.4px}
+.copy:active{transform:scale(.99);background:#165368}
+.empty{padding:24px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px}
+footer{text-align:center;border-top:1px solid var(--line);color:#8097a5;font-size:11px;letter-spacing:1px;padding:22px 12px 30px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#e6bd69;color:#071521;padding:11px 16px;border-radius:8px;box-shadow:0 5px 25px #0007;display:none;z-index:10;max-width:90vw;text-align:center;font-weight:800}
+@media(min-width:650px){main{padding:28px 22px 50px}.card{padding:16px 18px 14px}.copy{width:auto;min-width:160px}.actions{text-align:right}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="crest" aria-hidden="true">✚</div>
+    <div class="eyebrow">Field Reference • Roleplay</div>
+    <h1>Alameda Medical Alliance</h1>
+    <p>Official Macro Sheet · Quick reference for in-game communications</p>
+  </div>
+</header>
+<main class="wrap">
+  <section class="intro">
+    <h2>Macro Reference</h2>
+    <p>Search for a command, then tap its copy button to use it in-game.</p>
+  </section>
+  <div class="tools">
+    <input id="search" type="search" placeholder="Search macros or commands…" aria-label="Search macros">
+  </div>
+  <div class="section-head">
+    <h2>All Macros</h2>
+    <span class="small" id="count">17 macros</span>
+  </div>
+  <div class="macro-list" id="macroList"></div>
+</main>
+<footer>ALAMEDA MEDICAL ALLIANCE · ROLEPLAY REFERENCE · FOLLOW YOUR SERVER RULES</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const MACROS = [
+ {title:"Clock in",text:"/flobby Nurse (enter name) clock in"},
+ {title:"Clock out",text:"/flobby Nurse (enter name) clock out"},
+ {title:"Responding to emergency",text:"/flobby Medic Unit responding to emergency/code 3 (Lights and sirens)"},
+ {title:"On scene — safe",text:"/flobby Medic Unit on scene (Scene Safe)"},
+ {title:"On scene — hostile",text:"/flobby Medic Unit on scene (Scene HOSTILE, retreating to safe location )"},
+ {title:"Call cancelled",text:"/flobby Call cancelled. Returning to patrol."},
+ {title:"Bodycam on",text:"/do Bodycam ON"},
+ {title:"Starting CPR",text:"/do Starting CPR"},
+ {title:"Heal patient / sell pills",text:"/do heals patient/sells pills"},
+ {title:"Medical assistance introduction",text:"/me Hello! My name is (enter name) with the Alameda WMSA. Do you need medical assistance?"},
+ {title:"Farewell",text:"/me Have a nice day and STAY SAFE!"},
+ {title:"Taser — self-defense escape",text:"/do DEPLOYS TASER IN SELF DEFENSE FOR SAFE ESCAPE FROM DANGER"},
+ {title:"Medical delivery",text:"/flobby Starting med delivery!"},
+ {title:"Supervisor needed",text:"/flobby Supervisor Needed"},
+ {title:"Clear the scene",text:"/me this is Alameda Medical Alliance. Please clear the scene!"},
+ {title:"10-4 copy",text:"/flobby 10-4 Copy"},
+ {title:"Taser — CPR training",text:"/do DEPLOYS TASER FOR CPR TRAINING OPERATIONS"}
+];
+const list=document.getElementById("macroList");
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function render(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ const arr=MACROS.map((m,i)=>({...m,index:i+1})).filter(m=>(m.title+" "+m.text).toLowerCase().includes(q));
+ document.getElementById("count").textContent=arr.length+" of "+MACROS.length+" macros";
+ if(!arr.length){list.innerHTML='<div class="empty">No matching macros. Try another search.</div>';return;}
+ list.innerHTML=arr.map(m=>`<article class="card">
+   <div class="cardtop"><h3>${esc(m.title)}</h3><span class="number">${String(m.index).padStart(2,"0")} / 17</span></div>
+   <p class="macro">${esc(m.text)}</p>
+   <div class="actions"><button class="copy" type="button" data-copy="${m.index-1}">Copy Macro</button></div>
+ </article>`).join("");
+ list.querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",()=>copyMacro(Number(b.dataset.copy))));
+}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.style.display="block";clearTimeout(window._toastTimer);window._toastTimer=setTimeout(()=>t.style.display="none",2200);}
+async function copyMacro(index){
+ const text=MACROS[index].text;
+ try{await navigator.clipboard.writeText(text);toast("Copied: "+MACROS[index].title);}
+ catch(e){const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("Copied: "+MACROS[index].title);}catch(err){toast("Copy blocked. Press and hold the command to copy it.");}ta.remove();}
+}
+document.getElementById("search").addEventListener("input",render);
+render();
+</script>
+</body>
+</html>
